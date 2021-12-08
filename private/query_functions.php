@@ -19,4 +19,24 @@ function find_salamander_by_id($id) {
     mysqli_free_result($result);
     return $salamander;
 }
-?>
+
+function insert_subject ($salamanderName, $salamanderHabitat, $salamanderDescription) {
+    global $db;
+
+    $sql = "INSERT INTO subjects ";
+    $sql .= "(menu_name, position, visible) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $salamanderName . "',";
+    $sql .= "'" . $salamanderHabitat . "',";
+    $sql .= "'" . $salamanderDescription . "'";
+    $sql .= ")";
+    $result = mysqli_query($db, $sql);
+  
+    if($result) {
+      return true; 
+    } else {
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }

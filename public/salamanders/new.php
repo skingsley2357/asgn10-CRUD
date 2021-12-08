@@ -11,9 +11,17 @@ include(SHARED_PATH . '/salamanderHeader.php');
     <form action="<?= url_for('salamanders/create.php'); ?>" method="post">
       <dl>
         <dt>Salamander Name</dt>
-        <dd><input type="text" name="salamanderName" value="" /></dd>
+        <dd><input type="text" name="salamanderName" value=""></dd>
       </dl>
-        <input type="submit" value="Create Salamander" />
+      <dl>
+        <dt>Salamander Habitat</dt>
+        <dd><input type="text" name="salamanderHabitat" value="" rows="4" cols="75"></dd>
+      </dl>
+      <dl>
+        <dt>Salamander Description</dt>
+        <dd><input type="text" name="salamanderName" value="" rows="4" cols="75"></dd>
+      </dl>
+        <input type="submit" value="Create Salamander">
     </form>
 
 <?php include(SHARED_PATH . '/salamanderFooter.php'); ?>
