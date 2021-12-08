@@ -4,20 +4,19 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/subjects/index.php'));
 }
 $id = $_GET['id'];
-$salamanderName = '';
-$position = '';
-$visible = '';  
 
 if(is_post_request()) {
 
   // Handle form values sent by new.php
 
-  $menu_name = $_POST['salamanderName'] ?? '';
-  $position = $_POST['position'] ?? '';
-  $visible = $_POST['visible'] ?? '';
+  $name = $_POST['name'] ?? '';
+  $habitat = $_POST['habitat'] ?? '';
+  $description = $_POST['description'] ?? '';
 
-  echo "Form parameters<br />";
-  echo "Salamander name: " . $salamanderName . "<br />";
+  $result = update_salamander($salamander);
+
+  echo "Form parameters<br>";
+  echo "Salamander name: " . $salamanderName . "<br>";
 }
 
 ?>
@@ -30,13 +29,21 @@ if(is_post_request()) {
 
     <h1>Edit Salamander</h1>
 
-    <form action="<?= url_for('salamanders/edit.php?id=' . h(u($id))); ?>" method="post">
+    <form action="<?= url_for('salamanders/edit.php?id=' . h(u($id))); ?>" method="post" id="edit">
       <dl>
         <dt>Name</dt>
-        <dd><input type="text" name="salamanderName" value="" /></dd>
+        <dd><textarea form="edit" name="salamanderName" value="" rows="4" cols="75"></textarea></dd>
+      </dl>
+      <dl>
+        <dt>Habitat</dt>
+        <dd><textarea form="edit" name="salamanderHabitat" value="" rows="4" cols="75"></textarea></dd>
+      </dl>
+      <dl>
+        <dt>Description</dt>
+        <dd><textarea form="edit" name="salamanderDescription" value="" rows="4" cols="75"></textarea></dd>
       </dl>
       
-        <input type="submit" value="Edit Salamander" />
+        <input type="submit" value="Edit Salamander">
     </form>
 
 <?php include(SHARED_PATH . '/salamanderFooter.php'); ?>
