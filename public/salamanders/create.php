@@ -10,6 +10,10 @@ if(is_post_request()) {
   $salamanderHabitat = $_POST['salamanderHabitat'] ?? '';
   $salamanderDescription = $_POST['salamanderDescription'] ?? '';
 
+  $result = insert_salamander($menu_name, $position, $visible);
+  $new_id = mysqli_insert_id($db);
+  redirect_to(url_for('/show.php?id=' . $new_id));
+
   echo "Form parameters<br>";
   echo "Salamander name: " . $salamanderName . "<br>";
   echo "Salamander habitat: " . $salamanderHabitat . "<br>";
